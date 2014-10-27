@@ -24,7 +24,8 @@ def get_papers():
     else:
         paper_id = "MED,23589462"
     crawler = Crawler()
-    papers = crawler.crawl(paper_id, 10)
+    max_iters = 10
+    papers = crawler.crawl(paper_id, max_iters)
     return_dict = {id: paper.as_dict() for id, paper in papers.items()}
     return_list = [paper.as_dict() for id, paper in papers.items()]
 
@@ -35,4 +36,4 @@ def get_papers():
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000)) # use port variable or 5000
-    app.run(debug=False, port=port)
+    app.run(debug=True, port=port)

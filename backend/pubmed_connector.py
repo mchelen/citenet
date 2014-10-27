@@ -17,6 +17,7 @@ class PubMedConnector(APIConnector):
             date = None
             if self.get_date and paper_json.has_key('doi'):
                 res = requests.get("http://api.crossref.org/works/%s" % paper_json['doi'])
+                print "http://api.crossref.org/works/%s" % paper_json['doi']
                 if res.status_code == 200:
                     date = json.loads(res.content)['message']['issued']['date-parts'][0]
                     while len(date) < 3:
